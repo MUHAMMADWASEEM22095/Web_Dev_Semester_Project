@@ -1,11 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './Comonents/Navbar';
+import MyNav from './Comonents/Navbar';
+import Logo from './Comonents/logo';
+import YourHome from './Comonents/YourHome';
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <Logo/>
+      <YourHome/>
     </div>
   );
 }

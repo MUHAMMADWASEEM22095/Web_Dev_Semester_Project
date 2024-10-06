@@ -1,12 +1,13 @@
 import React from 'react'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-
-export default function Navbar() {
+export default function MyNav() {
   return (
     <div>
-      <div className='main sm'>
-            <img className='image sm' src="/logoname.png" alt="logo" />
-      </div>
+      <h1>Navbar</h1>
     </div>
   )
 }
