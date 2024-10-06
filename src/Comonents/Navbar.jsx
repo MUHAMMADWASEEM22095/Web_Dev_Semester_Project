@@ -9,15 +9,37 @@ import Globe from './Globe';
 
 export default function MyNav() {
   return (
-    <Navbar bg="light" expand="lg">
+    // <Navbar bg="light" expand="lg">
+    //   <Navbar.Brand href="#home">
+    //     <Logo/>
+    //   </Navbar.Brand>
+    //   <Nav.Item className='StayC' ><p id='Stay'>Stay</p></Nav.Item>
+    //   <Nav.Item className='ExpC' ><p id='Exp'>Experience</p></Nav.Item>
+    //   <Nav.Item className='YHome' href="#home"><YourHome/></Nav.Item>
+    //   <Nav.Item className='globe' ><Globe/></Nav.Item>
+    //   <NavDropdown className='drop'  title={<Profile/>} align="end">
+    //   </NavDropdown>
+    // </Navbar>
+
+    <Navbar bg="light" expand="lg" className="navbar">
       <Navbar.Brand href="#home">
-        <Logo/>
+        <Logo />
       </Navbar.Brand>
-      <Nav.Item className='YHome' href="#home"><YourHome/></Nav.Item>
-      <Nav.Item className='globe' ><Globe/></Nav.Item>
-      <NavDropdown className='drop'  title={<Profile/>} align="end">
-        
-      </NavDropdown>
+      <div className="center-items">
+        <Nav.Item className='StayC'>
+          <p id='Stay'>Stay</p>
+        </Nav.Item>
+        <Nav.Item className='ExpC'>
+          <p id='Exp'>Experience</p>
+        </Nav.Item>
+      </div>
+      <Nav.Item className='YHome' href="#home">
+        <YourHome />
+      </Nav.Item>
+      <Nav.Item className='globe'>
+        <Globe />
+      </Nav.Item>
+      <NavDropdown className='drop' title={<Profile />} align="end" />
     </Navbar>
   )
 }

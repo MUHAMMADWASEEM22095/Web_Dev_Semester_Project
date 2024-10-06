@@ -1,8 +1,8 @@
-.navbar {
+/* .navbar {
     display: flex;
-    justify-content: space-between; /* Space between logo and dropdown */
-    align-items: center; /* Center items vertically */
-    background-color:rgb(255, 255, 255);
+    justify-content: space-between; 
+    align-items: center; 
+    background-color:rgb(203, 131, 131);
     border-radius: 30px;
   }
   
@@ -14,12 +14,12 @@
   }
   
   .navbar-nav {
-    margin-left: 1%; /* Ensure nav items are on the right */
+    margin-left: 0%; 
   }
 
   .drop{
     padding-top: .5%;
-    margin-right: 4%; /* Adjust this value as needed */
+    margin-right: 4%;
     background-color:rgb(236, 236, 237);
     border-radius: 20px;
   }
@@ -55,3 +55,114 @@
     align-items: center;
     padding: 0.2%;
   }
+
+
+  #Stay{
+    font-size: small;
+    font-weight: bold;
+  }
+
+  #Exp{
+    font-size: small;
+    font-weight: bold;
+  }
+
+  .StayC{
+    background-color: aquamarine;
+  }
+ */
+
+ .navbar {
+    display: flex;
+    justify-content: space-between; /* Space between logo and dropdown */
+    align-items: center; /* Center items vertically */
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+  }
+  
+  .navbar-brand {
+    margin-left: 2%; 
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+  }
+  
+  .navbar-nav {
+    margin-left: 0%; /* Ensure nav items are on the right */
+  }
+  
+  /* Centering container for Stay and Experience */
+  .center-items {
+    display: flex;
+    flex-direction: row; /* Arrange items in a row */
+    justify-content: center; /* Center items */
+    flex-grow: 1; /* Allow this to grow and take available space */
+  }
+  
+  /* Individual styles for Stay and Experience */
+  .StayC, .ExpC {
+    margin: 0 10px; /* Adjust spacing between items */
+  }
+  
+  .drop {
+    padding-top: .5%;
+    margin-right: 2%; /* Adjust this value as needed */
+    background-color: rgb(236, 236, 237);
+    border-radius: 20px;
+  }
+  
+  .drop:hover {
+    box-shadow: 0 4px 8px rgb(40, 41, 41);
+    scale: 1.02;
+  }
+  
+  #Stay, #Exp {
+    font-size: small;
+    font-weight: bold;
+  }
+  
+  .YHome {
+    margin-left: 5%;
+    margin-right: 0;
+  }
+  
+  .YHome:hover {
+    box-shadow: 0 2px 4px rgb(167, 168, 168);
+    background-color: rgb(245, 245, 245);
+    border-radius: 20px;
+    align-items: center;
+   
+  }
+  
+  .globe {
+    margin-left: 0.6%;
+    margin-right: .7%;
+  }
+  
+  .globe:hover {
+    box-shadow: 0 2px 4px rgb(167, 168, 168);
+    background-color: rgb(245, 245, 245);
+    border-radius: 20px;
+    align-items: center;
+    
+  }
+  
+  .StayC {
+    background-color: rgb(255, 255, 255); /* Keeping original style */
+  }
+
+  .StayC:hover{
+    box-shadow: 0 2px 4px rgb(167, 168, 168);
+    background-color: rgb(245, 245, 245);
+    border-radius: 20px;
+    align-items: center;
+    
+  }
+
+  .ExpC:hover{
+    box-shadow: 0 2px 4px rgb(167, 168, 168);
+    background-color: rgb(245, 245, 245);
+    border-radius: 20px;
+    align-items: center;
+    
+  }
+  
