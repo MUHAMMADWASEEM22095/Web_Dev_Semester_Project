@@ -2,12 +2,13 @@
     display: flex;
     justify-content: space-between; /* Space between logo and dropdown */
     align-items: center; /* Center items vertically */
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(198, 123, 123);
     border-radius: 30px;
   }
   
   .navbar-brand {
-    margin-right: 50%; 
+    margin-right: 50%;
+    margin-left: 2%; 
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
   }
@@ -18,7 +19,7 @@
 
   .drop{
     padding-top: .5%;
-    margin-right: 8%; /* Adjust this value as needed */
+    margin-right: 4%; /* Adjust this value as needed */
     background-color:rgb(191, 198, 203);
     border-radius: 20px;
   }
@@ -26,5 +27,18 @@
   .drop:hover{
     box-shadow: 0 4px 8px  rgb(40, 41, 41);
     scale: 1.02;
+  }
+  #home-text{
+    font-size: small;
+    font-weight: bold;
+  }
+  .YHome{
+    margin-left: 4%;
+  }
+  .YHome:hover{
+    background-color: rgb(240, 236, 236);
+    border-radius: 20px;
+    align-items: center;
+    padding: 0.2%;
   }
   
