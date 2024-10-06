@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between; /* Space between logo and dropdown */
     align-items: center; /* Center items vertically */
-    background-color: rgb(198, 123, 123);
+    background-color:rgb(255, 255, 255);
     border-radius: 30px;
   }
   
@@ -20,7 +20,7 @@
   .drop{
     padding-top: .5%;
     margin-right: 4%; /* Adjust this value as needed */
-    background-color:rgb(191, 198, 203);
+    background-color:rgb(236, 236, 237);
     border-radius: 20px;
   }
 
@@ -33,12 +33,25 @@
     font-weight: bold;
   }
   .YHome{
-    margin-left: 4%;
+    margin-left: 5%;
+    margin-right: 0;
   }
   .YHome:hover{
-    background-color: rgb(240, 236, 236);
+    box-shadow: 0 2px 4px  rgb(167, 168, 168);
+    background-color: rgb(245, 245, 245);
     border-radius: 20px;
     align-items: center;
     padding: 0.2%;
   }
-  
+
+  .globe{
+    margin-left: 0.6%;
+  }
+
+  .globe:hover{
+    box-shadow: 0 2px 4px  rgb(167, 168, 168);
+    background-color: rgb(245, 245, 245);
+    border-radius: 20px;
+    align-items: center;
+    padding: 0.2%;
+  }

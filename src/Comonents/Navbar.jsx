@@ -5,6 +5,7 @@ import '../Designing/Nav.css';
 import Profile from './Profile';
 import Profile_pic from './Profile_pic';
 import YourHome from './YourHome';
+import Globe from './Globe';
 
 export default function MyNav() {
   return (
@@ -13,6 +14,7 @@ export default function MyNav() {
         <Logo/>
       </Navbar.Brand>
       <Nav.Item className='YHome' href="#home"><YourHome/></Nav.Item>
+      <Nav.Item className='globe' ><Globe/></Nav.Item>
       <NavDropdown className='drop'  title={<Profile/>} align="end">
         
       </NavDropdown>
