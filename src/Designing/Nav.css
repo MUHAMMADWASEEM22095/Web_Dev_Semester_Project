@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between logo and dropdown */
+    align-items: center; /* Center items vertically */
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+  }
+  
+  .navbar-brand {
+    margin-right: 50%; 
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+  }
+  
+  .navbar-nav {
+    margin-left: 1%; /* Ensure nav items are on the right */
+  }
+
+  .drop{
+    padding-top: .5%;
+    margin-right: 8%; /* Adjust this value as needed */
+    background-color:rgb(191, 198, 203);
+    border-radius: 20px;
+  }
+
+  .drop:hover{
+    box-shadow: 0 4px 8px  rgb(40, 41, 41);
+    scale: 1.02;
+  }
+  

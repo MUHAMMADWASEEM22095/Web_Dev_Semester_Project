@@ -1,13 +1,19 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Logo from './logo';
+import { Navbar, Nav,NavDropdown, Dropdown } from 'react-bootstrap';
+import '../Designing/Nav.css'; 
+import Profile from './Profile';
+import Profile_pic from './Profile_pic';
 
 export default function MyNav() {
   return (
-    <div>
-      <h1>Navbar</h1>
-    </div>
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand href="#home">
+        <Logo/>
+      </Navbar.Brand>
+      <NavDropdown className='drop'  title={<Profile/>} align="end">
+        
+      </NavDropdown>
+    </Navbar>
   )
 }
