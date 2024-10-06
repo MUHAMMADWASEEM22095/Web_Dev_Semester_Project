@@ -74,12 +74,29 @@
 
  .navbar {
     display: flex;
-    justify-content: space-between; /* Space between logo and dropdown */
-    align-items: center; /* Center items vertically */
-    background-color: rgb(255, 255, 255);
+    flex-direction: column; /* Allow multiple rows */
+    background-color: rgb(203, 131, 131);
     border-radius: 30px;
-  }
-  
+}
+
+.Row1 {
+    display: flex;
+    flex-direction: row; /* Keep items in a row */
+    justify-content: space-between; /* Space between logo and nav items */
+    align-items: center; /* Center items vertically */
+    width: 100%; /* Full width */
+    padding: 10px 0; /* Add some padding for better spacing */
+}
+
+.Row2 {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    margin-top: 5px; /* Space between rows */
+    width: 100%; /* Full width for centering */
+    padding: 10px 0; /* Optional: Add padding for better spacing */
+}
+
   .navbar-brand {
     margin-left: 2%; 
     background-color: rgb(255, 255, 255);
@@ -166,3 +183,28 @@
     
   }
   
+  
+
+.Row2NavItem {
+    margin: 0 10px; /* Optional: Adjust spacing between items if needed */
+}
+
+.Main {
+    display: flex; /* Align items in a row */
+    justify-content: center; /* Center items */
+    gap: 20px; /* Space between items */
+    padding: 10px; /* Space around the main container */
+}
+
+.first, .second, .third, .forth {
+    border: 1px solid #ccc; /* Add a border for visibility */
+    border-radius: 15px; /* Rounded edges */
+    padding: 15px; /* Add padding for better spacing */
+    background-color: #f9f9f9; /* Light background color */
+    text-align: center; /* Center text */
+    width: 100px; /* Set a fixed width, adjust as needed */
+}
+
+.text-muted {
+    color: #888; /* Muted text color */
+}
