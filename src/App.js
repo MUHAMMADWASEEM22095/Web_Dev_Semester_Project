@@ -4,6 +4,7 @@ import MyNav from './Comonents/Navbar';
 import Logo from './Comonents/logo';
 import YourHome from './Comonents/YourHome';
 import { Nav } from 'react-bootstrap';
+import Home from './Pages/Home';
 
 function App() {
   return (

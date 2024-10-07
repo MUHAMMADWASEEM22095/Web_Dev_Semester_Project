@@ -9,20 +9,7 @@ import Globe from './Globe';
 import Seach from './Seach';
 
 export default function MyNav() {
-  return (
-    // <Navbar bg="light" expand="lg">
-    //   <Navbar.Brand href="#home">
-    //     <Logo/>
-    //   </Navbar.Brand>
-    //   <Nav.Item className='StayC' ><p id='Stay'>Stay</p></Nav.Item>
-    //   <Nav.Item className='ExpC' ><p id='Exp'>Experience</p></Nav.Item>
-    //   <Nav.Item className='YHome' href="#home"><YourHome/></Nav.Item>
-    //   <Nav.Item className='globe' ><Globe/></Nav.Item>
-    //   <NavDropdown className='drop'  title={<Profile/>} align="end">
-    //   </NavDropdown>
-    // </Navbar>
-
-    
+  return ( 
     <Navbar bg="light" expand="lg" className="navbar">
       <div className='Row1'>
         <Navbar.Brand href="#home">
@@ -46,7 +33,7 @@ export default function MyNav() {
       </div>
 
       <div className="Row2">
-      <Nav>
+      <Nav classname="Row2Nav">
           <Nav.Item className='Row2NavItem'>
             <Seach /> 
           </Nav.Item>
