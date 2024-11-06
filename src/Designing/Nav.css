@@ -72,6 +72,12 @@
   }
  */
 
+.main{
+  height: 99%;
+  width: 99%;
+}
+
+
  .navbar {
     display: flex;
     flex-direction: column; 
@@ -246,9 +252,6 @@
   background-color: rgb(245, 245, 245);
 }
 
-
-
-
 .text-muted {
   color: #888; 
   font-size: 12px; 
@@ -257,4 +260,22 @@
 
 .W{
   margin: 0%;
+}
+
+
+.CardDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Set the desired gap between cards */
+  justify-content: center; 
+  width: 100%;
+  
+}
+
+.carousel-control-prev {
+  left: 4%;
+}
+
+.carousel-control-next {
+  right: 2%;
 }
