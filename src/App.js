@@ -6,6 +6,7 @@ import YourHome from './Comonents/YourHome';
 import { Nav } from 'react-bootstrap';
 import Home from './Pages/Home';
 import Cards from './Comonents/Cards';
+import Footer from './Comonents/Footer';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         <Cards/>
         <Cards/>
         <Cards/>
+      </div>
+      <div className='FootDiv'>
+        <Footer/>
       </div>
     </div>
 

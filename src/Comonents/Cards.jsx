@@ -8,10 +8,10 @@ export default function Cards() {
     <Carousel style={{ width: '22%',height:'25%',padding:'5px',
       backgroundColor: 'transparent',alignItems:'center',alignContent:'center'}}   
      indicators={false}
-    > {/* Carousel width is controlled here */}
+    > {}
     <Carousel.Item>
       <img 
-        className="d-block w-100 h-100"  /* Ensure the image fills the carousel container */
+        className="d-block w-100 h-100"  
         src="./Pics/room1.jfif" 
         alt="pic1" 
         style={{ borderRadius: '20px',objectFit: 'cover',

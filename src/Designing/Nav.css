@@ -74,7 +74,7 @@
 
 .main{
   height: 99%;
-  width: 99%;
+  width: 100%;
 }
 
 
@@ -278,4 +278,28 @@
 
 .carousel-control-next {
   right: 2%;
+}
+
+.FootDiv{
+  padding: 3%;
+  background-color: #f5f5f5;
+}
+
+
+.Foot{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; 
+  justify-content: center; 
+  width: 100%;
+}
+
+.ul1,.ul2,.ul3
+{
+  list-style-type: none;
+}
+
+.F1,.F2,.F3{
+
+  width: 30%;
 }
