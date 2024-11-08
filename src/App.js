@@ -7,32 +7,34 @@ import { Nav } from 'react-bootstrap';
 import Home from './Pages/Home';
 import Cards from './Comonents/Cards';
 import Footer from './Comonents/Footer';
+import{ListsProvider} from './Context/CardList.jsx';
 
 function App() {
   return (
-    <div className='main'>
-      <div className="App">
-        <MyNav/>
+    <ListsProvider>
+      <div className='main'>
+        <div className="App">
+          <MyNav/>
+        </div>
+        <div className='CardDiv'>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+          <Cards/>
+        </div>
+        <div className='FootDiv'>
+          <Footer/>
+        </div>
       </div>
-      <div className='CardDiv'>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-      </div>
-      <div className='FootDiv'>
-        <Footer/>
-      </div>
-    </div>
-
+    </ListsProvider>
   );
 }
 
