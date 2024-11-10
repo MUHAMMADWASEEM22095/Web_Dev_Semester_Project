@@ -269,7 +269,7 @@
   gap: 15px; /* Set the desired gap between cards */
   justify-content: center; 
   width: 100%;
-  
+  background-color: #f5f5f5;
 }
 
 .carousel-control-prev {

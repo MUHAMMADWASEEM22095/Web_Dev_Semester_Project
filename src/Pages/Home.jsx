@@ -7,8 +7,7 @@ import CardsBox from '../Comonents/Cards'
 export default function Home() {
   return (
     <div>
-        <div className='NavHome'>
-           
+        <div className='NavHome'> 
         </div>
         <Cards/>
     </div>

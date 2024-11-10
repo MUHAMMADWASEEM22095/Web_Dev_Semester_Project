@@ -7,9 +7,14 @@ import { Nav } from 'react-bootstrap';
 import Home from './Pages/Home';
 import Cards from './Comonents/Cards';
 import Footer from './Comonents/Footer';
-import{ListsProvider} from './Context/CardList.jsx';
+import{ListsProvider,useRooms} from './Context/CardList.jsx';
+import { useContext } from 'react';
 
 function App() {
+  const roomlist=useRooms()
+  {roomlist.map((room, index) => (
+    console.log('room',`${index}`,room)
+  ))}
   return (
     <ListsProvider>
       <div className='main'>
@@ -17,18 +22,9 @@ function App() {
           <MyNav/>
         </div>
         <div className='CardDiv'>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/>
+          {roomlist.map((room,index) => (
+            <Cards key={index} roomdata={room} />
+          ))}
         </div>
         <div className='FootDiv'>
           <Footer/>
@@ -36,6 +32,7 @@ function App() {
       </div>
     </ListsProvider>
   );
+  console.log('cards',Cards.roomData)
 }
 
 export default App;
