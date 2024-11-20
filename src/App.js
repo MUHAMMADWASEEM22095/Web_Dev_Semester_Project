@@ -8,6 +8,7 @@ import Home from './Pages/Home';
 import Cards from './Comonents/Cards';
 import Footer from './Comonents/Footer';
 import{ListsProvider,useRooms} from './Context/CardList.jsx';
+
 import { useContext } from 'react';
 
 function App() {
@@ -26,13 +27,13 @@ function App() {
             <Cards key={index} roomdata={room} />
           ))}
         </div>
+        
         <div className='FootDiv'>
           <Footer/>
         </div>
       </div>
     </ListsProvider>
   );
-  console.log('cards',Cards.roomData)
 }
 
 export default App;
