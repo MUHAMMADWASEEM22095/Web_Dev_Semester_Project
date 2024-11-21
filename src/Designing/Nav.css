@@ -357,7 +357,13 @@
   padding-left: 12%;
 }
 
-.info{
+.info {
   height: auto;
   width: auto;
+}
+
+.link-wrapper {
+  display: block;
+  /* Ensures the Link behaves like a block element */
+  text-decoration: none;
 }

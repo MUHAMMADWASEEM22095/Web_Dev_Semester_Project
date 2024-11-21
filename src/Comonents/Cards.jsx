@@ -5,9 +5,10 @@ import Carousel from 'react-bootstrap/Carousel';
 export default function Cards({roomdata}) {
   console.log(`${roomdata.id} , ${roomdata.title}`)
   return (
+    
     <div
       style={{
-        width: '22%',
+        width: 'auto',
         height: 'auto',
         padding: '10px',
         display: 'flex',
@@ -24,6 +25,7 @@ export default function Cards({roomdata}) {
         }}
         indicators={false}
       >
+        
         <Carousel.Item>
           <img
             className="d-block w-100"

@@ -5,6 +5,7 @@ import Cards from '../Comonents/Cards'
 import CardsBox from '../Comonents/Cards'
 import Footer from '../Comonents/Footer'
 import { useRooms } from '../Context/CardList'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   const roomlist=useRooms()
@@ -19,7 +20,9 @@ export default function Home() {
         </div>
         <div className='CardDiv'>
           {roomlist.map((room,index) => (
+            <Link to={'/listing'} className="link-wrapper">
             <Cards key={index} roomdata={room} />
+            </Link>
           ))}
         </div>
         

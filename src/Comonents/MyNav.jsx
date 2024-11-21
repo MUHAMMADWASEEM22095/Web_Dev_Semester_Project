@@ -7,13 +7,17 @@ import Profile_pic from './Profile_pic';
 import YourHome from './YourHome';
 import Globe from './Globe';
 import Seach from './Seach';
+import { Link } from 'react-router-dom';
 
 export default function MyNav() {
   return ( 
     <Navbar bg="light" expand="lg" className="navbar">
       <div className='Row1'>
-        <Navbar.Brand href="#home">
+        
+        <Navbar.Brand>
+          <Link to={'/'}>
           <Logo />
+          </Link>
         </Navbar.Brand>
         <div className="center-items">
           <Nav.Item className='StayC'>
