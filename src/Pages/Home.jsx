@@ -25,7 +25,7 @@ export default function Home() {
   }, []); // Empty dependency array means this effect runs once when the component mounts
 
   // Slice the first 10 rooms
-  const roomsToDisplay = roomlist.slice(0, 10);
+  const roomsToDisplay = roomlist.slice(0, 9);
 
   return (
     <div>

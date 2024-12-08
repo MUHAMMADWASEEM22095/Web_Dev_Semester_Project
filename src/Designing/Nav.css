@@ -272,9 +272,8 @@
 .CardDiv {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  /* Set the desired gap between cards */
-  justify-content: center;
+  gap: 13px; /* Space between cards */
+  justify-content: center; /* Center align the cards */
   width: 100%;
   background-color: #f5f5f5;
 }
@@ -363,7 +362,20 @@
 }
 
 .link-wrapper {
-  display: block;
-  /* Ensures the Link behaves like a block element */
+  /* display: block;
   text-decoration: none;
+  box-shadow: 0 2px 4px rgb(167, 168, 168);
+  border-radius: 2%; */
+
+
+  flex: 1 1 calc(33.333% - 13px); /* 3 cards per row, subtracting the gap */
+  max-width: calc(33.333% - 13px); /* Make sure the card does not exceed the width */
+  height: 300px; /* Fixed height for all cards */
+  
+  
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   description: String,
   location: String,
   title: String,
-  pic_url:url,
+  pic_url:String,
   price:String
 });
 

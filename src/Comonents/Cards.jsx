@@ -29,7 +29,8 @@ export default function Cards({roomdata}) {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={roomdata.pic_url}
+            src="./Pics/room2.jfif"
+            
             alt={roomdata.name}
             style={{ borderRadius: '20px', objectFit: 'cover' }}
           />
@@ -37,7 +38,7 @@ export default function Cards({roomdata}) {
       </Carousel>
       <div >
         <h4>{roomdata.name}</h4>
-        <p><b>{roomdata.description}</b></p>
+        <p><b>{roomdata.location}</b></p>
         <p className='text-muted'><b>{roomdata.price}</b><b>$</b></p>
       </div>
     </div>
