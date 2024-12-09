@@ -3,15 +3,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
-// Middleware to parse JSON data
+
 app.use(express.json());
 const cors = require('cors');
-app.use(cors()); // Enable CORS for all routes
+app.use(cors()); 
 
 
-// 📡 Connect to MongoDB
+
 mongoose.connect("mongodb://localhost:27017/AirBnbDb", { 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
@@ -19,44 +19,58 @@ mongoose.connect("mongodb://localhost:27017/AirBnbDb", {
   .then(() => console.log('✅ Connected to MongoDB!'))
   .catch(err => console.error('❌ Error connecting to MongoDB:', err));
 
-// 🗂 Import Airbnb model
-const Airbnb = require('./Models/Airbnb'); // Adjusted model import to match your Airbnb model
 
-// 📥 API to fetch all Airbnb data
+const Airbnb = require('./Models/Airbnb');
+
+
 app.get('/', async (req, res) => {
     try {
-        const airbnbs = await Airbnb.find(); // Fetch all documents from the "Airbnb" collection
+        const airbnbs = await Airbnb.find(); 
         res.status(200).json(airbnbs);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching Airbnb data', error });
     }
 });
 
-// 📥 API to fetch all airbnbs (same as root endpoint)
+
 app.get('/airbnbs', async (req, res) => {
     try {
-        const airbnbs = await Airbnb.find(); // Fetch all documents from the "Airbnb" collection
+        const airbnbs = await Airbnb.find();
         res.status(200).json(airbnbs);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching Airbnb data', error });
     }
 });
 
-// 📥 API to fetch an Airbnb by ID
-app.get('/airbnbs/:id', async (req, res) => {
+
+app.get('/airbnbs/:roomno', async (req, res) => {
     try {
-        const airbnb = await Airbnb.findById(req.params.id); // Find a specific Airbnb by ID
-        if (!airbnb) return res.status(404).json({ message: 'Airbnb not found' });
-        res.status(200).json(airbnb);
+        
+        const roomno = Number(req.params.roomno); 
+
+       
+        const airbnb = await Airbnb.findOne({ roomno: roomno }); 
+
+        if (!airbnb) {
+            return res.status(404).json({ message: 'Airbnb not found' });
+        }
+
+        res.status(200).json(airbnb); 
     } catch (error) {
+        console.error('Error fetching Airbnb data:', error);
         res.status(500).json({ message: 'Error fetching Airbnb data', error });
     }
 });
 
-// 🛠️ API to create a new Airbnb listing
+
+app.listen(3001, () => {
+    console.log('Server is running on http://localhost:3001');
+});
+
+
 app.post('/airbnbs', async (req, res) => {
     try {
-        const newAirbnb = new Airbnb(req.body); // Create a new Airbnb from the request body
+        const newAirbnb = new Airbnb(req.body); 
         await newAirbnb.save();
         res.status(201).json(newAirbnb);
     } catch (error) {
@@ -64,7 +78,7 @@ app.post('/airbnbs', async (req, res) => {
     }
 });
 
-// 🚀 Start the server
+
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

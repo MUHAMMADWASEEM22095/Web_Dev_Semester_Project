@@ -5,27 +5,27 @@ import Footer from '../Comonents/Footer';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
-  // State to store room data
-  const [roomlist, setRoomlist] = useState([]);
+  const [roomlist, setRoomlist] = useState([]); // State to store room data
   const [loading, setLoading] = useState(true); // To track loading state
   const [error, setError] = useState(null); // To track errors
 
-  // Fetch data from server on component mount
+  
   useEffect(() => {
-    fetch('http://localhost:3001/') // URL to fetch room data from your server
-      .then((response) => response.json()) // Parse response as JSON
+    fetch('http://localhost:8080/') 
+      .then((response) => response.json()) 
       .then((data) => {
-        setRoomlist(data); // Store room data in state
-        setLoading(false); // Set loading to false once data is fetched
+        setRoomlist(data); 
+        setLoading(false); 
       })
       .catch((err) => {
-        setError('Failed to fetch rooms'); // Set error message
+        console.error('Error fetching data:', err); // Log the actual error
+        setError('Failed to fetch rooms'); 
         setLoading(false); // Set loading to false in case of error
       });
-  }, []); // Empty dependency array means this effect runs once when the component mounts
+  }, []); 
 
   // Slice the first 10 rooms
-  const roomsToDisplay = roomlist.slice(0, 9);
+  const roomsToDisplay = roomlist.slice(0, 9); 
 
   return (
     <div>
@@ -34,16 +34,15 @@ export default function Home() {
           <MyNav />
         </div>
 
-        {/* Render loading state, error message, or the rooms */}
         <div className="CardDiv">
           {loading ? (
-            <p>Loading rooms...</p> // Display while loading
+            <p>Loading rooms...</p> 
           ) : error ? (
-            <p>{error}</p> // Display error message if fetch fails
+            <p>{error}</p> 
           ) : (
-            roomsToDisplay.map((room, index) => (
-              <Link to={'/listing'} className="link-wrapper" key={index}>
-                <Cards roomdata={room} /> {/* Render Card component with room data */}
+            roomsToDisplay.map((room) => (
+              <Link to={`/listing/${roomlist.roomno}`} className="link-wrapper" key={room.roomno}>
+                <Cards roomdata={room} /> 
               </Link>
             ))
           )}

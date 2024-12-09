@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   name: String,
-  id: Number,
+  roomno: Number,
   bedrooms: Number,
+  bathrooms:Number,
   description: String,
   location: String,
   title: String,
@@ -11,4 +12,4 @@ const userSchema = new mongoose.Schema({
   price:String
 });
 
-module.exports = mongoose.model('Airbnb', userSchema, 'Airbnb'); // Third argument tells Mongoose the exact collection name
+module.exports = mongoose.model('Airbnb', userSchema, 'Airbnb');

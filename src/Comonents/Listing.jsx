@@ -1,48 +1,66 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'; 
 import Carousel from 'react-bootstrap/Carousel';
 
 export default function Listing() {
+    const { roomno } = useParams(); 
+    const [roomData, setRoomData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        
+        fetch(`http://localhost:8080/airbnbs/${roomno}`) 
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch room details');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setRoomData(data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setError(err.message);
+                setLoading(false);
+            });
+    }, [roomno]); 
+
+    if (loading) return <p>Loading room details...</p>;
+    if (error) return <p>{error}</p>;
+
     return (
         <div className='BigDiv'>
-            {/* main */}
             <div className='innerdiv'>
-                {/* inner div */}
                 <div className='carasoul'>
-                    {/* carousel */}
-                    <Carousel >
-                        <img
-                            className="d-block w-100"
-                            src="./Pics/room2.jfif"
-                            alt='room'
-                            style={{ objectFit: 'cover' }}
-                        />
+                    <Carousel>
+                        {roomData.images?.map((img, index) => (
+                            <Carousel.Item key={index}>
+                                <img
+                                    className="d-block w-100"
+                                    src={img} 
+                                    alt={`Room image ${index + 1}`}
+                                    style={{ objectFit: 'cover' }}
+                                />
+                            </Carousel.Item>
+                        ))}
                     </Carousel>
                 </div>
+                
                 <div className='info'>
-                    {/* name wegera */}
-                    <h3>Title</h3>
-                    <p style={{ font: 'bold', fontSize: 'large' }}>Location</p>
-                    <p style={{ font: 'bold' }}>No of Guests</p>
-                    <p style={{ font: 'bold' }}>Price</p>
-                    <p style={{ font: 'bold' }}>Bedrooms</p>
-                    <p style={{ font: 'bold' }}>Bathrooms</p>
-                    <p style={{ font: 'bold' }}>amenities</p>
+                    <h3>{roomData.title}</h3>
+                    <p style={{ fontWeight: 'bold', fontSize: 'large' }}>Location: {roomData.location}</p>
+                    <p style={{ fontWeight: 'bold' }}>Price: ${roomData.price}</p>
+                    <p style={{ fontWeight: 'bold' }}>Bedrooms: {roomData.bedrooms}</p>
+                    <p style={{ fontWeight: 'bold' }}>Bathrooms: {roomData.bathrooms}</p>
+                    <p style={{ fontWeight: 'bold' }}>Amenities: {roomData.amenities?.join(', ')}</p>
                 </div>
+
                 <div className='discriptions'>
-                    {/* discription */}
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius esse expedita ab dolores hic rerum velit,
-                        sit dolore? Deleniti voluptates dolorum sunt adipisci
-                        ducimus aut nobis unde iusto ratione numquam?
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti similique eaque blanditiis quis praesentium, provident distinctio, id dolore iusto
-                        illum aliquam dolorem cumque voluptatem, aspernatur minima at! Quas, sapiente magnam.
-
-
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At ab nesciunt facere, ipsa iusto commodi architecto reiciendis officiis veritatis explicabo, optio labore, vitae
-                        cupiditate? Accusamus repellat impedit nostrum aperiam voluptates.</p>
+                    <p>{roomData.description}</p>
                 </div>
             </div>
         </div>
-    )
+    );
 }

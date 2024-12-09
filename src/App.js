@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
 
-          <Route path="/listing" element={<ListingPage/>} />
+          <Route path="/listing/:id" element={<ListingPage/>} />
         </Routes>
       </Router>
     </ListsProvider>

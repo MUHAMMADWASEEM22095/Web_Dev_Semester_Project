@@ -371,9 +371,6 @@
   flex: 1 1 calc(33.333% - 13px); /* 3 cards per row, subtracting the gap */
   max-width: calc(33.333% - 13px); /* Make sure the card does not exceed the width */
   height: 300px; /* Fixed height for all cards */
-  
-  
- 
   display: flex;
   justify-content: center;
   align-items: center;
