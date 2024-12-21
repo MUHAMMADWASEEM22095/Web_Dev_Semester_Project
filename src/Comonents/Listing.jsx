@@ -10,9 +10,11 @@ export default function Listing() {
 
     useEffect(() => {
         
-        fetch(`http://localhost:8080/airbnbs/${roomno}`) 
+        fetch(`http://localhost:3001/airbnbs/${roomno}`) 
+    
             .then((response) => {
                 if (!response.ok) {
+
                     throw new Error('Failed to fetch room details');
                 }
                 return response.json();

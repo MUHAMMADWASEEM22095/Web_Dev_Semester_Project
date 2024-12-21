@@ -9,23 +9,27 @@ export default function Home() {
   const [loading, setLoading] = useState(true); // To track loading state
   const [error, setError] = useState(null); // To track errors
 
-  
   useEffect(() => {
     fetch('http://localhost:8080/') 
-      .then((response) => response.json()) 
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch rooms'); // Handle non-2xx HTTP responses
+        }
+        return response.json();
+      })
       .then((data) => {
-        setRoomlist(data); 
-        setLoading(false); 
+        setRoomlist(data); // Set fetched data to state
+        setLoading(false); // Stop loading
       })
       .catch((err) => {
-        console.error('Error fetching data:', err); // Log the actual error
-        setError('Failed to fetch rooms'); 
-        setLoading(false); // Set loading to false in case of error
+        console.error('Error fetching data:', err); // Log the error for debugging
+        setError('Failed to fetch rooms'); // Display user-friendly error
+        setLoading(false); // Stop loading
       });
-  }, []); 
+  }, []);
 
-  // Slice the first 10 rooms
-  const roomsToDisplay = roomlist.slice(0, 9); 
+  // Slice the first 9 rooms
+  const roomsToDisplay = roomlist.slice(0, 9);
 
   return (
     <div>
@@ -36,12 +40,18 @@ export default function Home() {
 
         <div className="CardDiv">
           {loading ? (
-            <p>Loading rooms...</p> 
+            <p>Loading rooms...</p> // Display while loading
           ) : error ? (
-            <p>{error}</p> 
+            <p>{error}</p> // Display error if fetching fails
+          ) : roomsToDisplay.length === 0 ? (
+            <p>No rooms available</p> // Display if no rooms to show
           ) : (
             roomsToDisplay.map((room) => (
-              <Link to={`/listing/${roomlist.roomno}`} className="link-wrapper" key={room.roomno}>
+              <Link
+                to={`/listing/${room.roomno}`} // Use `room.roomno` to construct the route
+                className="link-wrapper"
+                key={room.roomno} // Ensure unique key for each room
+              >
                 <Cards roomdata={room} /> 
               </Link>
             ))

@@ -79,6 +79,24 @@ app.post('/airbnbs', async (req, res) => {
 });
 
 
+
+app.get('/airbnbs/search', (req, res) => {
+    const { query } = req.query; 
+    if (!query) {
+        return res.status(400).json({ error: 'Query parameter is required' });
+    }
+
+    
+    const filteredRooms = rooms.filter(room =>
+        room.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    res.json(filteredRooms);
+});
+
+
+
+
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

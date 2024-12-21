@@ -7,6 +7,7 @@ import Profile_pic from './Profile_pic';
 import YourHome from './YourHome';
 import Globe from './Globe';
 import Seach from './Seach';
+import Search from './Search';
 import { Link } from 'react-router-dom';
 
 export default function MyNav() {
@@ -21,10 +22,10 @@ export default function MyNav() {
         </Navbar.Brand>
         <div className="center-items">
           <Nav.Item className='StayC'>
-            <p id='Stay'>Stay</p>
+           <Search/>
           </Nav.Item>
           <Nav.Item className='ExpC'>
-            <p id='Exp'>Experience</p>
+           
           </Nav.Item>
         </div>
         <Nav.Item className='YHome' href="#home">
