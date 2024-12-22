@@ -10,18 +10,27 @@ import Footer from './Comonents/Footer';
 import { ListsProvider, useRooms } from './Context/CardList.jsx';
 import ListingPage from './Pages/ListingPage.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Signuppage from './Pages/signuppage.jsx';
+import Loginpage from './Pages/Loginpage.jsx';
+import { AuthProvider } from './Context/usermodel.jsx'
+
 
 function App() {
   return (
-    <ListsProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home/>} />
+    <AuthProvider>
+      <ListsProvider>
+        <Router>
+          <Routes>
 
-          <Route path="/listing/:id" element={<ListingPage/>} />
-        </Routes>
-      </Router>
-    </ListsProvider>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/listing/:roomno" element={<ListingPage />} />
+            <Route path="/signup" element={<Signuppage />} />
+            <Route path="/login" element={<Loginpage />} />
+          </Routes>
+        </Router>
+      </ListsProvider>
+    </AuthProvider>
 
   );
 }

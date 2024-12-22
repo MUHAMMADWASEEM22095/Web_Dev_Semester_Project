@@ -1,68 +1,114 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; 
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 
 export default function Listing() {
-    const { roomno } = useParams(); 
-    const [roomData, setRoomData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const { roomno } = useParams();
+  const { state } = useLocation(); // Access passed state
+  const navigate = useNavigate(); // For navigation
+  const [roomData, setRoomData] = useState(state?.roomData || null);
+  const [loading, setLoading] = useState(!state?.roomData); // Only load if no data is passed
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        
-        fetch(`http://localhost:3001/airbnbs/${roomno}`) 
-    
-            .then((response) => {
-                if (!response.ok) {
+  const handleBooking = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/airbnbs/${roomno}/book`, {
+        method: 'PUT',
 
-                    throw new Error('Failed to fetch room details');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setRoomData(data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                setError(err.message);
-                setLoading(false);
-            });
-    }, [roomno]); 
+      });
 
-    if (loading) return <p>Loading room details...</p>;
-    if (error) return <p>{error}</p>;
+      if (!response.ok) {
+        throw new Error('Failed to book the room');
+      }
+      const updatedRoom = await response.json();
+      setRoomData((prevData) => ({
+        ...prevData,
+        booked: updatedRoom.room.booked,
+      }));
+      alert(`Room ${updatedRoom.room.roomno} booked successfully!`);
+    } catch (err) {
+      alert(`Error: ${err.message}`);
+    }
+  };
 
-    return (
-        <div className='BigDiv'>
-            <div className='innerdiv'>
-                <div className='carasoul'>
-                    <Carousel>
-                        {roomData.images?.map((img, index) => (
-                            <Carousel.Item key={index}>
-                                <img
-                                    className="d-block w-100"
-                                    src={img} 
-                                    alt={`Room image ${index + 1}`}
-                                    style={{ objectFit: 'cover' }}
-                                />
-                            </Carousel.Item>
-                        ))}
-                    </Carousel>
-                </div>
-                
-                <div className='info'>
-                    <h3>{roomData.title}</h3>
-                    <p style={{ fontWeight: 'bold', fontSize: 'large' }}>Location: {roomData.location}</p>
-                    <p style={{ fontWeight: 'bold' }}>Price: ${roomData.price}</p>
-                    <p style={{ fontWeight: 'bold' }}>Bedrooms: {roomData.bedrooms}</p>
-                    <p style={{ fontWeight: 'bold' }}>Bathrooms: {roomData.bathrooms}</p>
-                    <p style={{ fontWeight: 'bold' }}>Amenities: {roomData.amenities?.join(', ')}</p>
-                </div>
+  useEffect(() => {
+    if (!roomData) {
+      // Fetch data if not passed via state
+      fetch(`http://localhost:3001/airbnbs/${roomno}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch room details');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setRoomData(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }
+  }, [roomData, roomno]);
 
-                <div className='discriptions'>
-                    <p>{roomData.description}</p>
-                </div>
-            </div>
+  if (loading) return <p className="loading">Loading room details...</p>;
+  if (error) return <p className="error">{error}</p>;
+
+  return (
+    <div className="listing-container">
+      <div className="listing-inner">
+        <div className="carousel-container">
+          <Carousel>
+            {roomData.images?.map((img, index) => (
+              <Carousel.Item key={index}>
+                <img
+                  className="d-block w-100"
+                  src={img} // Assuming `images` array contains valid URLs
+                  alt={roomData.title}
+                  style={{ objectFit: 'cover' }}
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
         </div>
-    );
+
+        <div className="room-info">
+          <h3 className="room-title">{roomData.title}</h3>
+          <div className="room-details">
+            <p><strong>Location:</strong> {roomData.location}</p>
+            <p><strong>Price:</strong> ${roomData.price}</p>
+            <p><strong>Bedrooms:</strong> {roomData.bedrooms}</p>
+            <p><strong>Bathrooms:</strong> {roomData.bathrooms}</p>
+            <p><strong>Amenities:</strong> {roomData.amenities?.join(', ')}</p>
+            <p>
+              <strong>Status:</strong>{' '}
+              {roomData.booked ? (
+                <span style={{ color: 'red' }}>Booked</span>
+              ) : (
+                <span style={{ color: 'green' }}>Available</span>
+              )}
+            </p>
+          </div>
+        </div>
+
+        <div className="room-description">
+          <h4>Description</h4>
+          <p>{roomData.description}</p>
+        </div>
+
+        <div className="booking-section">
+          {roomData.booked ? (
+            <button className="booking-btn" disabled>
+              Already Booked
+            </button>
+          ) : (
+            <button className="booking-btn" onClick={handleBooking}>
+              Book Now
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }

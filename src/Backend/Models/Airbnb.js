@@ -9,7 +9,12 @@ const userSchema = new mongoose.Schema({
   location: String,
   title: String,
   pic_url:String,
-  price:String
+  price:String,
+  booked: { type: Boolean, default: false },
+  userId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User' 
+  },
 });
 
 module.exports = mongoose.model('Airbnb', userSchema, 'Airbnb');

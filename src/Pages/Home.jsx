@@ -2,34 +2,43 @@ import React, { useEffect, useState } from 'react';
 import MyNav from '../Comonents/MyNav';
 import Cards from '../Comonents/Cards';
 import Footer from '../Comonents/Footer';
+import Search from '../Comonents/Search'; // Import the Search component
 import { Link } from 'react-router-dom';
 
 export default function Home() {
-  const [roomlist, setRoomlist] = useState([]); // State to store room data
+  const [roomlist, setRoomlist] = useState([]); // State to store all room data
+  const [filteredRooms, setFilteredRooms] = useState([]); // State to store filtered rooms
   const [loading, setLoading] = useState(true); // To track loading state
   const [error, setError] = useState(null); // To track errors
 
   useEffect(() => {
-    fetch('http://localhost:8080/') 
+    // Fetch all rooms on component mount
+    fetch('http://localhost:3001/')
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch rooms'); // Handle non-2xx HTTP responses
+          throw new Error('Failed to fetch rooms');
         }
         return response.json();
       })
       .then((data) => {
-        setRoomlist(data); // Set fetched data to state
-        setLoading(false); // Stop loading
+        setRoomlist(data);
+        setFilteredRooms(data); // Initialize filteredRooms with all rooms
+        setLoading(false);
       })
       .catch((err) => {
-        console.error('Error fetching data:', err); // Log the error for debugging
-        setError('Failed to fetch rooms'); // Display user-friendly error
-        setLoading(false); // Stop loading
+        console.error('Error fetching data:', err);
+        setError('Failed to fetch rooms');
+        setLoading(false);
       });
   }, []);
 
-  // Slice the first 9 rooms
-  const roomsToDisplay = roomlist.slice(0, 9);
+  const handleSearch = (query) => {
+    // Filter rooms based on the search query
+    const filtered = roomlist.filter((room) =>
+      room.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredRooms(filtered);
+  };
 
   return (
     <div>
@@ -38,21 +47,29 @@ export default function Home() {
           <MyNav />
         </div>
 
+        {/* Add the Search bar */}
+        <div style={{ margin: '20px 0', textAlign: 'center' }}>
+          <Search onSearch={handleSearch} />
+        </div>
+
         <div className="CardDiv">
           {loading ? (
-            <p>Loading rooms...</p> // Display while loading
+            <p>Loading rooms...</p>
           ) : error ? (
-            <p>{error}</p> // Display error if fetching fails
-          ) : roomsToDisplay.length === 0 ? (
-            <p>No rooms available</p> // Display if no rooms to show
+            <p>{error}</p>
+          ) : filteredRooms.length === 0 ? (
+            <p>No rooms available</p>
           ) : (
-            roomsToDisplay.map((room) => (
+            filteredRooms.slice(0, 9).map((room) => (
               <Link
-                to={`/listing/${room.roomno}`} // Use `room.roomno` to construct the route
+                to={{
+                  pathname: `/listing/${room.roomno}`,
+                  state: { roomData: room }, // Passing roomData as state
+                }}
                 className="link-wrapper"
-                key={room.roomno} // Ensure unique key for each room
+                key={room.roomno}
               >
-                <Cards roomdata={room} /> 
+                <Cards roomdata={room} />
               </Link>
             ))
           )}

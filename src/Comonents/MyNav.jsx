@@ -22,7 +22,7 @@ export default function MyNav() {
         </Navbar.Brand>
         <div className="center-items">
           <Nav.Item className='StayC'>
-           <Search/>
+           
           </Nav.Item>
           <Nav.Item className='ExpC'>
            

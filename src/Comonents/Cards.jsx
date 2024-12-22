@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import Profile_pic from './Profile_pic';
 
 
 export default function Cards({roomdata}) {
@@ -27,14 +28,18 @@ export default function Cards({roomdata}) {
       >
         
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="./Pics/room2.jfif"
-            
-            alt={roomdata.name}
-            style={{ borderRadius: '20px', objectFit: 'cover' }}
-          />
-        </Carousel.Item>
+    <img
+        className="d-block w-100"
+        src={roomdata.pic_url} 
+        alt={roomdata.name} // Use the name as the alt text
+        style={{
+            borderRadius: '20px', 
+            objectFit: 'cover', 
+            maxHeight: '400px' // Optional: Limit the height for better layout
+        }}
+    />
+</Carousel.Item>
+
       </Carousel>
       <div >
         <h4>{roomdata.name}</h4>
