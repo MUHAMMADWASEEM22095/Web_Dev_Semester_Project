@@ -1,76 +1,3 @@
-/* .navbar {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    background-color:rgb(203, 131, 131);
-    border-radius: 30px;
-  }
-  
-  .navbar-brand {
-    margin-right: 50%;
-    margin-left: 2%; 
-    background-color: rgb(255, 255, 255);
-    border-radius: 30px;
-  }
-  
-  .navbar-nav {
-    margin-left: 0%; 
-  }
-
-  .drop{
-    padding-top: .5%;
-    margin-right: 4%;
-    background-color:rgb(236, 236, 237);
-    border-radius: 20px;
-  }
-
-  .drop:hover{
-    box-shadow: 0 4px 8px  rgb(40, 41, 41);
-    scale: 1.02;
-  }
-  #home-text{
-    font-size: small;
-    font-weight: bold;
-  }
-  .YHome{
-    margin-left: 5%;
-    margin-right: 0;
-  }
-  .YHome:hover{
-    box-shadow: 0 2px 4px  rgb(167, 168, 168);
-    background-color: rgb(245, 245, 245);
-    border-radius: 20px;
-    align-items: center;
-    padding: 0.2%;
-  }
-
-  .globe{
-    margin-left: 0.6%;
-  }
-
-  .globe:hover{
-    box-shadow: 0 2px 4px  rgb(167, 168, 168);
-    background-color: rgb(245, 245, 245);
-    border-radius: 20px;
-    align-items: center;
-    padding: 0.2%;
-  }
-
-
-  #Stay{
-    font-size: small;
-    font-weight: bold;
-  }
-
-  #Exp{
-    font-size: small;
-    font-weight: bold;
-  }
-
-  .StayC{
-    background-color: aquamarine;
-  }
- */
 
 .main {
   height: 99%;
@@ -214,6 +141,7 @@
   width: 100%;
 }
 
+
 .Main {
   display: flex;
   justify-content: center;
@@ -269,6 +197,196 @@
 }
 
 
+
+/*NAVBAR RESPONSIVE*/
+
+@media screen and (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 10px;
+  }
+
+  /* Row Adjustments */
+  .Row1 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .Row2 {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  /* Center Items */
+  .center-items {
+    flex-direction: column;
+    padding: 0;
+    height: auto;
+  }
+
+  /* Stay and Experience Components */
+  .StayC,
+  .ExpC {
+    margin: 5px 0;
+    width: 90%; /* Make them stack */
+  }
+
+  /* Globe */
+  .globe {
+    margin: 10px auto;
+  }
+
+  /* YHome */
+  .YHome {
+    margin: 10px auto;
+  }
+
+  /* Navbar Brand */
+  .navbar-brand {
+    margin: 0 auto;
+  }
+
+  /* Drop */
+  .drop {
+    margin: 10px auto;
+    width: 90%;
+    text-align: center;
+  }
+
+  .Main {
+    flex-direction: column; /* Stack the items vertically on smaller screens */
+    gap: 10px;
+    height: auto; /* Allow the height to adjust automatically */
+    padding: 10px;
+  }
+
+  .first,
+  .second,
+  .third,
+  .forth {
+    width: 90%; /* Reduce width for better spacing on smaller screens */
+    height: 50px; /* Set a fixed height to maintain uniformity */
+    text-align: center; /* Center text for better readability */
+  }
+
+  .search-container {
+    flex-direction: column; /* Stack the input and button vertically */
+    gap: 15px; /* Increase gap for better spacing */
+  }
+
+  .search-input {
+    width: 90%; /* Make the input width responsive */
+    font-size: 14px; /* Slightly smaller font size */
+  }
+
+  .search-button {
+    width: 90%; /* Make the button width responsive */
+    font-size: 14px; /* Slightly smaller font size */
+  }
+
+
+  .CardDiv {
+    gap: 5px; /* Adjust gap for smaller screens */
+    padding: 5px; /* Reduce padding on smaller screens */
+  }
+
+  .link-wrapper {
+    flex: 1 1 100%; /* 1 card per row on smaller screens */
+    max-width: 100%; /* Full width for each card */
+    height: auto; /* Allow the height to adjust based on content */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Further Adjustments for Smaller Devices */
+  .drop {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+
+  .StayC,
+  .ExpC {
+    font-size: 12px;
+    padding: 8px 5px;
+  }
+
+  .YHome {
+    font-size: 12px;
+  }
+
+  .globe {
+    height: auto;
+  }
+
+  #Stay,
+  #Exp {
+    font-size: 12px;
+  }
+
+  .search-input {
+    width: 100%; /* Make the input width full on very small screens */
+    font-size: 12px; /* Further reduce font size */
+  }
+
+  .search-button {
+    width: 100%; /* Make the button width full on very small screens */
+    font-size: 12px; /* Further reduce font size */
+  }
+
+  .CardDiv {
+    flex-direction: column; /* Stack the cards vertically on very small screens */
+    align-items: center; /* Center align cards vertically */
+  }
+}
+
+/*NAVBAR RESPONSIVE END*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .CardDiv {
   display: flex;
   flex-wrap: wrap;
@@ -315,22 +433,6 @@
 }
 
 
-.modaldiv {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* Dim the background */
-  display: flex;
-  justify-content: center;
-  /* Horizontally center the modal */
-  align-items: center;
-  /* Vertically center the modal */
-  z-index: 1000;
-  /* Make sure the modal is on top */
-}
 
 
 

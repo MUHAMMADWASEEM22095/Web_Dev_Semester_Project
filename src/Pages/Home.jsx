@@ -70,7 +70,7 @@ export default function Home() {
               <Link
                 to={{
                   pathname: `/listing/${room.roomno}`,
-                  state: { roomData: room }, // Passing roomData as state
+                  state: { roomData: room },
                 }}
                 className="link-wrapper"
                 key={room.roomno}
