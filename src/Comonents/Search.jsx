@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 export default function Search({ onSearch }) {
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -8,14 +9,17 @@ export default function Search({ onSearch }) {
     };
 
     return (
-        <div>
-            <input className='input'
+        <div className="search-container">
+            <input
+                className="search-input"
                 type="text"
                 placeholder="Search rooms..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button onClick={handleSearch}>Search</button>
+            <button className="search-button" onClick={handleSearch}>
+                Search
+            </button>
         </div>
     );
 }

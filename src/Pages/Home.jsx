@@ -10,6 +10,7 @@ export default function Home() {
   const [filteredRooms, setFilteredRooms] = useState([]); // State to store filtered rooms
   const [loading, setLoading] = useState(true); // To track loading state
   const [error, setError] = useState(null); // To track errors
+  const [visibleCount, setVisibleCount] = useState(9); // Number of rooms to display initially
 
   useEffect(() => {
     // Fetch all rooms on component mount
@@ -40,6 +41,11 @@ export default function Home() {
     setFilteredRooms(filtered);
   };
 
+  const handleShowMore = () => {
+    // Increase the visible count by 9
+    setVisibleCount((prevCount) => prevCount + 9);
+  };
+
   return (
     <div>
       <div className="main">
@@ -60,7 +66,7 @@ export default function Home() {
           ) : filteredRooms.length === 0 ? (
             <p>No rooms available</p>
           ) : (
-            filteredRooms.slice(0, 9).map((room) => (
+            filteredRooms.slice(0, visibleCount).map((room) => (
               <Link
                 to={{
                   pathname: `/listing/${room.roomno}`,
@@ -74,6 +80,15 @@ export default function Home() {
             ))
           )}
         </div>
+
+        {/* Show More Button */}
+        {filteredRooms.length > visibleCount && (
+          <div style={{ textAlign: 'center', margin: '20px 0' }}>
+            <button onClick={handleShowMore} className="show-more-btn">
+              Show More
+            </button>
+          </div>
+        )}
 
         <div className="FootDiv">
           <Footer />

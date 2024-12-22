@@ -60,16 +60,14 @@ export default function Listing() {
       <div className="listing-inner">
         <div className="carousel-container">
           <Carousel>
-            {roomData.images?.map((img, index) => (
-              <Carousel.Item key={index}>
+              <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src={img} // Assuming `images` array contains valid URLs
+                  src={roomData.picture_url} 
                   alt={roomData.title}
                   style={{ objectFit: 'cover' }}
                 />
               </Carousel.Item>
-            ))}
           </Carousel>
         </div>
 

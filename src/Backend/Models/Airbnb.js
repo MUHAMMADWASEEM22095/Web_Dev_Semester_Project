@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   description: String,
   location: String,
   title: String,
-  pic_url:String,
+  picture_url:String,
   price:String,
   booked: { type: Boolean, default: false },
   userId: { 

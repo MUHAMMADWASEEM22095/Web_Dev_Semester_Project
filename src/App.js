@@ -21,7 +21,6 @@ function App() {
       <ListsProvider>
         <Router>
           <Routes>
-
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/listing/:roomno" element={<ListingPage />} />
