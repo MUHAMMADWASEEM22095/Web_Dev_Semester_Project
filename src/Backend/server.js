@@ -92,13 +92,13 @@ app.post('/signup', async (req, res) => {
     }
   
     try {
-      // Check if user already exists
+      
       const existingUser = await client.findOne({ email });
       if (existingUser) {
         return res.status(400).json({ message: 'User already exists' });
       }
   
-      // Hash password
+      
       const hashedPassword = await bcrypt.hash(password, 10);
   
       const newUser = new client({
@@ -119,24 +119,24 @@ app.post('/signup', async (req, res) => {
   app.post('/login', async (req, res) => {
     const { email, password } = req.body;
   
-    // Find the user by email
+    
     const user = await client.findOne({ email });
     
     if (!user) {
       return res.status(400).json({ message: 'User not found' });
     }
   
-    // Compare the password with the hashed password stored in DB
+    
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     
     if (!isPasswordCorrect) {
       return res.status(400).json({ message: 'Incorrect password' });
     }
   
-    // Generate a JWT token
+    
     const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
   
-    // Send the token in the response
+    
     res.status(200).json({ token });
   });
   
@@ -172,7 +172,7 @@ app.post('/signup', async (req, res) => {
         return res.status(400).json({ message: 'Room is already booked' });
       }
   
-      // Update room booking status and associate user with the booking
+      
       airbnb.booked = true;
       airbnb.userId = userId;
       await airbnb.save();
