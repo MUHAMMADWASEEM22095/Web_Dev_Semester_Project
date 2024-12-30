@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signuppage from './Pages/signuppage.jsx';
 import Loginpage from './Pages/Loginpage.jsx';
 import { AuthProvider } from './Context/usermodel.jsx'
+import AddRoom from './Comonents/Addroom.jsx';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/listing/:roomno" element={<ListingPage />} />
             <Route path="/signup" element={<Signuppage />} />
             <Route path="/login" element={<Loginpage />} />
+            <Route path="/addhome" element={<AddRoom />} />
           </Routes>
         </Router>
       </ListsProvider>

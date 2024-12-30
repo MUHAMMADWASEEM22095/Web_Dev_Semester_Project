@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function YourHome() {
   return (
     <div>
-        <p id='home-text'>Airbnb Your Home</p>
+      <Link to="/addhome">
+        <p id="home-text">Add Your Home</p>
+      </Link>
     </div>
-  )
+  );
 }

@@ -184,7 +184,33 @@ app.post('/signup', async (req, res) => {
   });
 
 
-
+  app.post('/airbnbs', async (req, res) => {
+    const { title, location, price, roomno, description, amenities } = req.body;
+    if (!title || !location || !price || !roomno) {
+      return res.status(400).json({ message: 'All fields are required.' });
+    }
+    try {
+      const existingRoom = await Airbnb.findOne({ roomno });
+      if (existingRoom) {
+        return res.status(400).json({ message: 'Room number already exists.' });
+      }
+      const newAirbnb = new Airbnb({
+        title,
+        location,
+        price,
+        roomno,
+        description: description || '',
+        amenities: amenities || [],
+        booked: false, 
+      });
+      await newAirbnb.save();
+      res.status(201).json({ message: 'Room added successfully!', room: newAirbnb });
+    } catch (error) {
+      console.error('❌ Error adding room:', error);
+      res.status(500).json({ message: 'Error adding room', error });
+    }
+  });
+  
 
 
 
